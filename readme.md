@@ -143,7 +143,7 @@ print(set([len(seq) for seq in bat_reads]))
 {136}
 ~~~
 
-Very good. The output above shows indicates a length of 136 for all species.
+Very good. The output above indicates a length of 136 for all species.
 
 Next, we need to convert the reads into the one-hot encoded format that will be well-suited to fit into our 1D convolutions:
 
