@@ -1,7 +1,7 @@
 
-##1D-Convolutional neural network (1D-CNN) to differentiate DNA reads of different species
+## 1D-Convolutional neural network (1D-CNN) to differentiate DNA reads of different species
 
-###Introduction
+### Introduction
 
 I was wondering whether a neural network would be capable of differentiating different species from Next-Generation-Sequencing (NGS) reads alone. Therefore, I performed the following experiment:
 
@@ -12,7 +12,7 @@ Can a neural network differentiate between these species?
 
 >Note: I will try to give some explanations of new concepts. If you are a beginner, and want to learn how neural networks work, you can check out my Vectorized_MLP_python repo. In that repo I give a detailed explanation of how artificial neural networks work by coding a vectorized MLP from scratch.
 
-###Prepare the data
+### Prepare the data
 
 Now, let's obtain and prepare the samples:
 
@@ -236,7 +236,7 @@ dataloader_train = DataLoader(dataset_train, batch_size=256, shuffle=True)
 dataloader_test = DataLoader(dataset_test, batch_size=256, shuffle=True)
 ~~~
 
-###Creating a 1D-Convolutional neural net (1D-CNN)
+### Creating a 1D-Convolutional neural net (1D-CNN)
 
 Whereas I was only briefly looking at a vanilla LSTM, I tuned a little more with the 1D-CNN. Therefore, I will focus on that architecture here. The model is pretty straightforward.
 The one-hot encoded reads are fed into the 1D-CNN with three 1D convolutions.
@@ -318,7 +318,7 @@ Intuitively, I find the the idea of learning rate decay very convincing. At the 
 Whereas the larger learning rate (gradient descent takes bigger steps) helps the network converge faster at the start, the smaller steps prevent it from overshooting the local minima or saddle points at the end of the training.
 To me, this feels like an efficient way to navigate the error surface and a plausible way to increase convergence efficiency.
 
-###Starting the training
+### Starting the training
 
 First, let's include the following line, to make use of the .to(device) function later. This makes it easy to shift tensors to the GPU.
 
@@ -379,7 +379,7 @@ if epoch % 10 == 0:
     print(f"train accuracy at epoch {epoch}: total_correct={total_correct}, total_num={total_num} {total_correct/total_num}")
 ~~~
 
-###Running the 1D-CNN
+### Running the 1D-CNN
 
 If everything works as expected, you should see the network train:
 
@@ -417,20 +417,23 @@ I actually tried quite a lot of different architectures, including many variatio
 Also an LSTM that I trained, was not able to go beyond 80 %.
 Maybe we need to go for a transformer architecture in the future.
 
-###Summary
+#### Summary
 
 We successfully trained a 1D-convolutional neural network to differentiate 3 species by looking at reads of DNA.
 
 We got to an accuracy of 81.5 % which is already quite impressive, given that we are learning with a context window of only 136 nucleotides.
 
-###References
+### References
 
 <a id="1">[1]<a/> https://www.ncbi.nlm.nih.gov/sra
+
 <a id="2">[2]<a/> https://www.illumina.com/documents/products/technotes/technote_Q-Scores.pdf
+
 <a id="3">[3]<a/> https://pytorch.org/docs/stable/generated/torch.nn.Conv1d.html
+
 <a id="4">[4]<a/> https://pytorch.org/docs/stable/generated/torch.optim.Adam.html
 
-###Solution
+### Solution
 
 ~~~bash
 1) dolphin
